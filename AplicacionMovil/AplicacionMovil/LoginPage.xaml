@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicacionMovil.LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource Background}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16,0" Spacing="0">
+
+            <!-- Branding Section -->
+            <VerticalStackLayout Spacing="8" Padding="0,64,0,0">
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Border BackgroundColor="{StaticResource PrimaryContainer}"
+                            StrokeShape="RoundRectangle 12"
+                            StrokeThickness="0"
+                            Padding="16"
+                            HeightRequest="64"
+                            WidthRequest="64">
+                        <Label Text="&#x1F37D;"
+                               FontSize="28"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                    </Border>
+                </HorizontalStackLayout>
+                <Label Text="BIG FOOD SERVICES. SA"
+                       Style="{StaticResource LoginTitle}" />
+                <Label Text="Professional Administration Portal"
+                       Style="{StaticResource LoginSubtitle}" />
+            </VerticalStackLayout>
+
+            <!-- Spacer -->
+            <BoxView HeightRequest="24" Color="Transparent" />
+
+            <!-- Card Container -->
+            <Border BackgroundColor="{StaticResource SurfaceContainerLowest}"
+                    Stroke="{StaticResource OutlineVariant}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="32">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.05" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="24">
+
+                    <!-- Username Field -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="USERNAME"
+                               Style="{StaticResource LoginFieldLabel}" />
+                        <Grid ColumnDefinitions="Auto,*"
+                              ColumnSpacing="10"
+                              HeightRequest="48"
+                              BackgroundColor="{StaticResource Background}">
+                            <Label Text="&#x1F464;"
+                                   FontSize="18"
+                                   VerticalTextAlignment="Center"
+                                   Padding="12,0,0,0" />
+                            <Entry x:Name="txtUsername"
+                                   Grid.Column="1"
+                                   Placeholder="Enter admin ID"
+                                   ReturnType="Next"
+                                   Focused="OnUsernameFocused"
+                                   Unfocused="OnUsernameUnfocused" />
+                            <BoxView x:Name="underlineUsername"
+                                     Grid.ColumnSpan="2"
+                                     HeightRequest="2"
+                                     VerticalOptions="End"
+                                     Color="{StaticResource OutlineVariant}" />
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <!-- Password Field -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="PASSWORD"
+                               Style="{StaticResource LoginFieldLabel}" />
+                        <Grid ColumnDefinitions="Auto,*,Auto"
+                              ColumnSpacing="10"
+                              HeightRequest="48"
+                              BackgroundColor="{StaticResource Background}">
+                            <Label Text="&#x1F512;"
+                                   FontSize="16"
+                                   VerticalTextAlignment="Center"
+                                   Padding="12,0,0,0" />
+                            <Entry x:Name="txtPassword"
+                                   Grid.Column="1"
+                                   Placeholder="Enter your password"
+                                   IsPassword="True"
+                                   ReturnType="Done"
+                                   Focused="OnPasswordFocused"
+                                   Unfocused="OnPasswordUnfocused" />
+                            <Label x:Name="lblTogglePassword"
+                                   Grid.Column="2"
+                                   Text="&#x1F441;"
+                                   FontSize="18"
+                                   VerticalTextAlignment="Center"
+                                   Padding="0,0,12,0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnTogglePasswordVisibility" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <BoxView x:Name="underlinePassword"
+                                     Grid.ColumnSpan="3"
+                                     HeightRequest="2"
+                                     VerticalOptions="End"
+                                     Color="{StaticResource OutlineVariant}" />
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <!-- Remember Me & Forgot Access -->
+                    <Grid ColumnDefinitions="*,Auto">
+                        <HorizontalStackLayout Spacing="6"
+                                               VerticalOptions="Center">
+                            <CheckBox x:Name="chkRemember"
+                                      Color="{StaticResource Primary}" />
+                            <Label Text="Remember me"
+                                   FontFamily="Inter"
+                                   FontSize="13"
+                                   VerticalTextAlignment="Center" />
+                        </HorizontalStackLayout>
+                        <Label Grid.Column="1"
+                               Text="Forgot Access?"
+                               Style="{StaticResource LoginLink}"
+                               VerticalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnForgotAccessTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <!-- Login Button -->
+                    <Button x:Name="btnLogin"
+                            Text="LOG IN"
+                            Style="{StaticResource LoginPrimaryButton}"
+                            Clicked="OnLoginClicked" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Footer Section -->
+            <VerticalStackLayout Spacing="6"
+                                 Padding="0,16,0,24">
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Spacing="6">
+                    <Label Text="&#x1F6E1;"
+                           FontSize="14"
+                           VerticalTextAlignment="Center" />
+                    <Label Text="Secure API Gateway Connected"
+                           Style="{StaticResource LoginMonoLabel}" />
+                </HorizontalStackLayout>
+                <Label Text="&#x00A9; 2024 BIG FOOD SERVICES. SA | Operational Intelligence"
+                       Style="{StaticResource LoginFooter}" />
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
