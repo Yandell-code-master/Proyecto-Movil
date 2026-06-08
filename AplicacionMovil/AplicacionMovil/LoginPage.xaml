@@ -9,7 +9,7 @@
         <VerticalStackLayout Padding="16,0" Spacing="0">
 
             <!-- Branding Section -->
-            <VerticalStackLayout Spacing="8" Padding="0,64,0,0">
+            <VerticalStackLayout Spacing="8" Padding="0,64,0,24">
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <Border BackgroundColor="{StaticResource PrimaryContainer}"
                             StrokeShape="RoundRectangle 12"
@@ -30,9 +30,6 @@
                 <Label Text="Professional Administration Portal"
                        Style="{StaticResource LoginSubtitle}" />
             </VerticalStackLayout>
-
-            <!-- Spacer -->
-            <BoxView HeightRequest="24" Color="Transparent" />
 
             <!-- Card Container -->
             <Border BackgroundColor="{StaticResource SurfaceContainerLowest}"
