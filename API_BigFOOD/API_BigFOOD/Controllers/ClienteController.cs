@@ -64,13 +64,40 @@ namespace API_BigFOOD.Controllers
 
                 if (aux != null)
                 {
+                    //Si el cliente existe pero está inactivo se reactiva
+                    if (!aux.Estado)
+                    {
+                        //Se valida si ya existe otro cliente con el mismo correo
+                        Cliente clienteCorreo = this.dbContext.Clientes.FirstOrDefault(c => c.Email.Equals(temp.Email) && c.CedulaLegal != temp.CedulaLegal);
+
+                        if (clienteCorreo != null)
+                        {
+                            return $"Ya existe otro cliente con el correo {temp.Email}";
+                        }
+
+                        aux.Email = temp.Email;
+                        aux.UsuarioId = temp.UsuarioId;
+                        aux.Estado = true;
+
+                        this.dbContext.SaveChanges();
+
+                        //Se registra el evento en bitácora
+                        await this.bitacoraServices.RegistrarEvento(
+                            "Clientes",
+                            temp.UsuarioId,
+                            "UPDATE",
+                            $"Cliente reactivado: {aux.NombreCompleto}");
+
+                        return $"Cliente {aux.NombreCompleto} reactivado correctamente...";
+                    }
+
                     return $"Ya existe un cliente con la cédula {temp.CedulaLegal}";
                 }
 
                 //Se valida si ya existe un cliente con el mismo correo
-                Cliente clienteCorreo = this.dbContext.Clientes.FirstOrDefault(c => c.Email.Equals(temp.Email));
+                Cliente clienteCorreoActivo = this.dbContext.Clientes.FirstOrDefault(c => c.Email.Equals(temp.Email));
 
-                if (clienteCorreo != null)
+                if (clienteCorreoActivo != null)
                 {
                     return $"Ya existe un cliente con el correo {temp.Email}";
                 }
@@ -162,17 +189,6 @@ namespace API_BigFOOD.Controllers
             {
                 if (temp != null)
                 {
-                    //Se valida el tipo de cédula
-                    if (temp.TipoCedula.ToUpper() != "FISICA" &&
-                        temp.TipoCedula.ToUpper() != "JURIDICA" &&
-                        temp.TipoCedula.ToUpper() != "DIMEX")
-                    {
-                        return "El tipo de cédula debe ser FISICA, JURIDICA o DIMEX";
-                    }
-
-                    //Se convierte el tipo de cédula a mayúsculas
-                    temp.TipoCedula = temp.TipoCedula.ToUpper();
-
                     Cliente aux = this.dbContext.Clientes.Find(temp.CedulaLegal);
 
                     if (aux == null)
@@ -188,11 +204,8 @@ namespace API_BigFOOD.Controllers
                         return $"Ya existe otro cliente con el correo {temp.Email}";
                     }
 
-                    aux.TipoCedula = temp.TipoCedula;
-                    aux.NombreCompleto = temp.NombreCompleto;
                     aux.Email = temp.Email;
                     aux.Estado = temp.Estado;
-                    aux.UsuarioId = temp.UsuarioId;
 
                     this.dbContext.Clientes.Update(aux);
 
@@ -203,9 +216,9 @@ namespace API_BigFOOD.Controllers
                         "Clientes",
                         temp.UsuarioId,
                         "UPDATE",
-                        $"Cliente: {temp.NombreCompleto}");
+                        $"Cliente: {aux.NombreCompleto}");
 
-                    return $"Cambios aplicados correctamente a {temp.NombreCompleto}";
+                    return $"Cambios aplicados correctamente a {aux.NombreCompleto}";
                 }
                 else
                 {
@@ -237,36 +250,14 @@ namespace API_BigFOOD.Controllers
                         return $"No se puede eliminar el cliente {temp.NombreCompleto} porque tiene facturas pendientes de pago";
                     }
 
-                    //Se obtienen las facturas del cliente
-                    List<Factura> facturas = this.dbContext.Facturas.Where(f => f.CedulaCliente == cedula).ToList();
-
-                    //Se eliminan los detalles de las facturas
-                    foreach (Factura factura in facturas)
+                    //Se valida si el cliente ya se encuentra inactivo
+                    if (!temp.Estado)
                     {
-                        List<Det_Factura> detalles = this.dbContext.Det_Facturas.Where(d => d.NumFactura == factura.Numero).ToList();
-
-                        this.dbContext.Det_Facturas.RemoveRange(detalles);
+                        return $"El cliente {temp.NombreCompleto} ya se encuentra inactivo";
                     }
 
-                    //Se guardan los cambios
-                    this.dbContext.SaveChanges();
-
-                    //Se eliminan las cuentas por cobrar
-                    List<CuentasPorCobrar> cuentas = this.dbContext.CuentasPorCobrar.Where(c => c.CedulaCliente == cedula).ToList();
-
-                    this.dbContext.CuentasPorCobrar.RemoveRange(cuentas);
-
-                    //Se guardan los cambios
-                    this.dbContext.SaveChanges();
-
-                    //Se eliminan las facturas
-                    this.dbContext.Facturas.RemoveRange(facturas);
-
-                    //Se guardan los cambios
-                    this.dbContext.SaveChanges();
-
-                    //Se elimina el cliente
-                    this.dbContext.Clientes.Remove(temp);
+                    //Se realiza la eliminación lógica del cliente
+                    temp.Estado = false;
 
                     //Se guardan los cambios
                     this.dbContext.SaveChanges();
@@ -278,7 +269,7 @@ namespace API_BigFOOD.Controllers
                         "DELETE",
                         $"Cliente: {temp.NombreCompleto}");
 
-                    return $"Cliente {temp.NombreCompleto} eliminado correctamente...";
+                    return $"Cliente {temp.NombreCompleto} desactivado correctamente...";
                 }
                 else
                 {
