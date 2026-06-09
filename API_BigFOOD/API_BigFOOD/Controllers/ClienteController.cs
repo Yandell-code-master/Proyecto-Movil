@@ -1,7 +1,6 @@
 ﻿using API_BigFOOD.DTOs;
 using API_BigFOOD.Models;
 using API_BigFOOD.Services;
-using Microsoft.AspNetCore.Authorization; // Librería para uso de EndPoint protegidos
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_BigFOOD.Controllers
@@ -51,7 +50,6 @@ namespace API_BigFOOD.Controllers
         //Método para almacenar los datos de un cliente
         [HttpPost]
         [Route("Save")]
-        [Authorize]
         public async Task<string> Save(Cliente temp)
         {
             try
@@ -77,20 +75,65 @@ namespace API_BigFOOD.Controllers
                     return $"Ya existe un cliente con el correo {temp.Email}";
                 }
 
-                //Se valida el tipo de cédula
-                if (temp.TipoCedula.ToUpper() != "FISICA" &&
-                    temp.TipoCedula.ToUpper() != "JURIDICA" &&
-                    temp.TipoCedula.ToUpper() != "DIMEX")
+                //Se consulta la información del cliente en Gometa
+                ClienteGometaDTO clienteGometa =
+                    await this.gometaServices.ConsultarCedula(temp.CedulaLegal);
+
+                //Si existe información en Gometa se completa automáticamente
+                if (clienteGometa != null)
                 {
-                    return "El tipo de cédula debe ser FISICA, JURIDICA o DIMEX";
+                    //Se asigna el nombre completo obtenido desde Gometa
+                    temp.NombreCompleto = clienteGometa.Nombre;
+
+                    //Se asigna el tipo de cédula obtenido desde Gometa
+                    if (clienteGometa.TipoIdentificacion == "FISICA")
+                    {
+                        temp.TipoCedula = "FISICA";
+                    }
+                    else if (clienteGometa.TipoIdentificacion == "JURIDICA")
+                    {
+                        temp.TipoCedula = "JURIDICA";
+                    }
+                    else if (clienteGometa.TipoIdentificacion == "DIMEX/NITE")
+                    {
+                        temp.TipoCedula = "DIMEX";
+                    }
+                    else
+                    {
+                        return "Tipo de identificación no soportado";
+                    }
+                }
+                else
+                {
+                    //Si no existe en Gometa se validan los datos ingresados manualmente
+
+                    if (string.IsNullOrWhiteSpace(temp.NombreCompleto))
+                    {
+                        return "Debe indicar el nombre completo del cliente";
+                    }
+
+                    if (string.IsNullOrWhiteSpace(temp.TipoCedula))
+                    {
+                        return "Debe indicar el tipo de cédula";
+                    }
+
+                    //Se valida el tipo de cédula
+                    if (temp.TipoCedula.ToUpper() != "FISICA" &&
+                        temp.TipoCedula.ToUpper() != "JURIDICA" &&
+                        temp.TipoCedula.ToUpper() != "DIMEX")
+                    {
+                        return "El tipo de cédula debe ser FISICA, JURIDICA o DIMEX";
+                    }
+
+                    //Se convierte el tipo de cédula a mayúsculas
+                    temp.TipoCedula = temp.TipoCedula.ToUpper();
                 }
 
-                //Se convierte el tipo de cédula a mayúsculas
-                temp.TipoCedula = temp.TipoCedula.ToUpper();
-
+                //Se asignan los valores por defecto
                 temp.FechaRegistro = DateTime.Now;
                 temp.Estado = true;
 
+                //Se almacena el cliente
                 this.dbContext.Clientes.Add(temp);
 
                 this.dbContext.SaveChanges();
@@ -113,7 +156,6 @@ namespace API_BigFOOD.Controllers
         //Método encargado de modificar los datos de un cliente
         [HttpPut]
         [Route("Update")]
-        [Authorize]
         public async Task<string> Update(Cliente temp)
         {
             try
@@ -179,7 +221,6 @@ namespace API_BigFOOD.Controllers
         //Método encargado del proceso eliminar
         [HttpDelete]
         [Route("Delete")]
-        [Authorize]
         public async Task<string> Delete(string cedula)
         {
             try
@@ -248,21 +289,6 @@ namespace API_BigFOOD.Controllers
             {
                 return "Error " + ex.Message.ToString();
             }
-        }
-
-        //Metodo encargado de consumir el API de Gometa y buscar un cliente por cédula
-        [HttpGet]
-        [Route("ConsultarCedulaGometa")]
-        public async Task<IActionResult> ConsultarCedulaGometa(string cedula)
-        {
-            ClienteGometaDTO cliente = await this.gometaServices.ConsultarCedula(cedula);
-
-            if (cliente == null)
-            {
-                return NotFound("No existe ninguna persona con esa cédula");
-            }
-
-            return Ok(cliente);
         }
     }
 }
