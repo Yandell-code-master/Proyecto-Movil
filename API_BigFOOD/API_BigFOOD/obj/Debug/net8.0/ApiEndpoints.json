@@ -1,37 +1,5 @@
 [
   {
-    "ContainingType": "API_BigFOOD.Controllers.AuthController",
-    "Method": "AuthenticationUsers",
-    "RelativePath": "Auth/AuthenticationUsers",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "temp",
-        "Type": "API_BigFOOD.DTOs.LoginDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API_BigFOOD.Controllers.ClientesController",
-    "Method": "ConsultarCedulaGometa",
-    "RelativePath": "Clientes/ConsultarCedulaGometa",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "cedula",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "API_BigFOOD.Controllers.ClientesController",
     "Method": "Delete",
     "RelativePath": "Clientes/Delete",

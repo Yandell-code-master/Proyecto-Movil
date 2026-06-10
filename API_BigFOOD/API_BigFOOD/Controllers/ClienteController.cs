@@ -1,7 +1,6 @@
 ﻿using API_BigFOOD.DTOs;
 using API_BigFOOD.Models;
 using API_BigFOOD.Services;
-using Microsoft.AspNetCore.Authorization; // Librería para uso de EndPoint protegidos
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_BigFOOD.Controllers
@@ -51,7 +50,6 @@ namespace API_BigFOOD.Controllers
         //Método para almacenar los datos de un cliente
         [HttpPost]
         [Route("Save")]
-        [Authorize]
         public async Task<string> Save(Cliente temp)
         {
             try
@@ -66,31 +64,103 @@ namespace API_BigFOOD.Controllers
 
                 if (aux != null)
                 {
+                    //Si el cliente existe pero está inactivo se reactiva
+                    if (!aux.Estado)
+                    {
+                        //Se valida si ya existe otro cliente con el mismo correo
+                        Cliente clienteCorreo = this.dbContext.Clientes.FirstOrDefault(c => c.Email.Equals(temp.Email) && c.CedulaLegal != temp.CedulaLegal);
+
+                        if (clienteCorreo != null)
+                        {
+                            return $"Ya existe otro cliente con el correo {temp.Email}";
+                        }
+
+                        aux.Email = temp.Email;
+                        aux.UsuarioId = temp.UsuarioId;
+                        aux.Estado = true;
+
+                        this.dbContext.SaveChanges();
+
+                        //Se registra el evento en bitácora
+                        await this.bitacoraServices.RegistrarEvento(
+                            "Clientes",
+                            temp.UsuarioId,
+                            "UPDATE",
+                            $"Cliente reactivado: {aux.NombreCompleto}");
+
+                        return $"Cliente {aux.NombreCompleto} reactivado correctamente...";
+                    }
+
                     return $"Ya existe un cliente con la cédula {temp.CedulaLegal}";
                 }
 
                 //Se valida si ya existe un cliente con el mismo correo
-                Cliente clienteCorreo = this.dbContext.Clientes.FirstOrDefault(c => c.Email.Equals(temp.Email));
+                Cliente clienteCorreoActivo = this.dbContext.Clientes.FirstOrDefault(c => c.Email.Equals(temp.Email));
 
-                if (clienteCorreo != null)
+                if (clienteCorreoActivo != null)
                 {
                     return $"Ya existe un cliente con el correo {temp.Email}";
                 }
 
-                //Se valida el tipo de cédula
-                if (temp.TipoCedula.ToUpper() != "FISICA" &&
-                    temp.TipoCedula.ToUpper() != "JURIDICA" &&
-                    temp.TipoCedula.ToUpper() != "DIMEX")
+                //Se consulta la información del cliente en Gometa
+                ClienteGometaDTO clienteGometa =
+                    await this.gometaServices.ConsultarCedula(temp.CedulaLegal);
+
+                //Si existe información en Gometa se completa automáticamente
+                if (clienteGometa != null)
                 {
-                    return "El tipo de cédula debe ser FISICA, JURIDICA o DIMEX";
+                    //Se asigna el nombre completo obtenido desde Gometa
+                    temp.NombreCompleto = clienteGometa.Nombre;
+
+                    //Se asigna el tipo de cédula obtenido desde Gometa
+                    if (clienteGometa.TipoIdentificacion == "FISICA")
+                    {
+                        temp.TipoCedula = "FISICA";
+                    }
+                    else if (clienteGometa.TipoIdentificacion == "JURIDICA")
+                    {
+                        temp.TipoCedula = "JURIDICA";
+                    }
+                    else if (clienteGometa.TipoIdentificacion == "DIMEX/NITE")
+                    {
+                        temp.TipoCedula = "DIMEX";
+                    }
+                    else
+                    {
+                        return "Tipo de identificación no soportado";
+                    }
+                }
+                else
+                {
+                    //Si no existe en Gometa se validan los datos ingresados manualmente
+
+                    if (string.IsNullOrWhiteSpace(temp.NombreCompleto))
+                    {
+                        return "Debe indicar el nombre completo del cliente";
+                    }
+
+                    if (string.IsNullOrWhiteSpace(temp.TipoCedula))
+                    {
+                        return "Debe indicar el tipo de cédula";
+                    }
+
+                    //Se valida el tipo de cédula
+                    if (temp.TipoCedula.ToUpper() != "FISICA" &&
+                        temp.TipoCedula.ToUpper() != "JURIDICA" &&
+                        temp.TipoCedula.ToUpper() != "DIMEX")
+                    {
+                        return "El tipo de cédula debe ser FISICA, JURIDICA o DIMEX";
+                    }
+
+                    //Se convierte el tipo de cédula a mayúsculas
+                    temp.TipoCedula = temp.TipoCedula.ToUpper();
                 }
 
-                //Se convierte el tipo de cédula a mayúsculas
-                temp.TipoCedula = temp.TipoCedula.ToUpper();
-
+                //Se asignan los valores por defecto
                 temp.FechaRegistro = DateTime.Now;
                 temp.Estado = true;
 
+                //Se almacena el cliente
                 this.dbContext.Clientes.Add(temp);
 
                 this.dbContext.SaveChanges();
@@ -113,24 +183,12 @@ namespace API_BigFOOD.Controllers
         //Método encargado de modificar los datos de un cliente
         [HttpPut]
         [Route("Update")]
-        [Authorize]
         public async Task<string> Update(Cliente temp)
         {
             try
             {
                 if (temp != null)
                 {
-                    //Se valida el tipo de cédula
-                    if (temp.TipoCedula.ToUpper() != "FISICA" &&
-                        temp.TipoCedula.ToUpper() != "JURIDICA" &&
-                        temp.TipoCedula.ToUpper() != "DIMEX")
-                    {
-                        return "El tipo de cédula debe ser FISICA, JURIDICA o DIMEX";
-                    }
-
-                    //Se convierte el tipo de cédula a mayúsculas
-                    temp.TipoCedula = temp.TipoCedula.ToUpper();
-
                     Cliente aux = this.dbContext.Clientes.Find(temp.CedulaLegal);
 
                     if (aux == null)
@@ -146,11 +204,8 @@ namespace API_BigFOOD.Controllers
                         return $"Ya existe otro cliente con el correo {temp.Email}";
                     }
 
-                    aux.TipoCedula = temp.TipoCedula;
-                    aux.NombreCompleto = temp.NombreCompleto;
                     aux.Email = temp.Email;
                     aux.Estado = temp.Estado;
-                    aux.UsuarioId = temp.UsuarioId;
 
                     this.dbContext.Clientes.Update(aux);
 
@@ -161,9 +216,9 @@ namespace API_BigFOOD.Controllers
                         "Clientes",
                         temp.UsuarioId,
                         "UPDATE",
-                        $"Cliente: {temp.NombreCompleto}");
+                        $"Cliente: {aux.NombreCompleto}");
 
-                    return $"Cambios aplicados correctamente a {temp.NombreCompleto}";
+                    return $"Cambios aplicados correctamente a {aux.NombreCompleto}";
                 }
                 else
                 {
@@ -179,7 +234,6 @@ namespace API_BigFOOD.Controllers
         //Método encargado del proceso eliminar
         [HttpDelete]
         [Route("Delete")]
-        [Authorize]
         public async Task<string> Delete(string cedula)
         {
             try
@@ -196,36 +250,14 @@ namespace API_BigFOOD.Controllers
                         return $"No se puede eliminar el cliente {temp.NombreCompleto} porque tiene facturas pendientes de pago";
                     }
 
-                    //Se obtienen las facturas del cliente
-                    List<Factura> facturas = this.dbContext.Facturas.Where(f => f.CedulaCliente == cedula).ToList();
-
-                    //Se eliminan los detalles de las facturas
-                    foreach (Factura factura in facturas)
+                    //Se valida si el cliente ya se encuentra inactivo
+                    if (!temp.Estado)
                     {
-                        List<Det_Factura> detalles = this.dbContext.Det_Facturas.Where(d => d.NumFactura == factura.Numero).ToList();
-
-                        this.dbContext.Det_Facturas.RemoveRange(detalles);
+                        return $"El cliente {temp.NombreCompleto} ya se encuentra inactivo";
                     }
 
-                    //Se guardan los cambios
-                    this.dbContext.SaveChanges();
-
-                    //Se eliminan las cuentas por cobrar
-                    List<CuentasPorCobrar> cuentas = this.dbContext.CuentasPorCobrar.Where(c => c.CedulaCliente == cedula).ToList();
-
-                    this.dbContext.CuentasPorCobrar.RemoveRange(cuentas);
-
-                    //Se guardan los cambios
-                    this.dbContext.SaveChanges();
-
-                    //Se eliminan las facturas
-                    this.dbContext.Facturas.RemoveRange(facturas);
-
-                    //Se guardan los cambios
-                    this.dbContext.SaveChanges();
-
-                    //Se elimina el cliente
-                    this.dbContext.Clientes.Remove(temp);
+                    //Se realiza la eliminación lógica del cliente
+                    temp.Estado = false;
 
                     //Se guardan los cambios
                     this.dbContext.SaveChanges();
@@ -237,7 +269,7 @@ namespace API_BigFOOD.Controllers
                         "DELETE",
                         $"Cliente: {temp.NombreCompleto}");
 
-                    return $"Cliente {temp.NombreCompleto} eliminado correctamente...";
+                    return $"Cliente {temp.NombreCompleto} desactivado correctamente...";
                 }
                 else
                 {
@@ -248,21 +280,6 @@ namespace API_BigFOOD.Controllers
             {
                 return "Error " + ex.Message.ToString();
             }
-        }
-
-        //Metodo encargado de consumir el API de Gometa y buscar un cliente por cédula
-        [HttpGet]
-        [Route("ConsultarCedulaGometa")]
-        public async Task<IActionResult> ConsultarCedulaGometa(string cedula)
-        {
-            ClienteGometaDTO cliente = await this.gometaServices.ConsultarCedula(cedula);
-
-            if (cliente == null)
-            {
-                return NotFound("No existe ninguna persona con esa cédula");
-            }
-
-            return Ok(cliente);
         }
     }
 }
