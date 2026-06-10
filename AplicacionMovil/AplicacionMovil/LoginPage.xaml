@@ -107,20 +107,24 @@
                     </VerticalStackLayout>
 
                     <!-- Remember Me & Forgot Access -->
-                    <Grid ColumnDefinitions="*,Auto">
-                        <HorizontalStackLayout Spacing="6"
-                                               VerticalOptions="Center">
-                            <CheckBox x:Name="chkRemember"
-                                      Color="{StaticResource Primary}" />
-                            <Label Text="Remember me"
-                                   FontFamily="Inter"
-                                   FontSize="13"
-                                   VerticalTextAlignment="Center" />
-                        </HorizontalStackLayout>
+                    <Grid ColumnDefinitions="Auto,*,Auto"
+                          VerticalOptions="Center">
+                        <CheckBox x:Name="chkRemember"
+                                  Color="{StaticResource Primary}"
+                                  VerticalOptions="Center" />
                         <Label Grid.Column="1"
+                               Text="Remember me"
+                               FontFamily="Inter"
+                               FontSize="13"
+                               VerticalTextAlignment="Center"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource OnSurface}"
+                               LineBreakMode="TailTruncation" />
+                        <Label Grid.Column="2"
                                Text="Forgot Access?"
                                Style="{StaticResource LoginLink}"
-                               VerticalTextAlignment="Center">
+                               VerticalTextAlignment="Center"
+                               VerticalOptions="Center">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnForgotAccessTapped" />
                             </Label.GestureRecognizers>
