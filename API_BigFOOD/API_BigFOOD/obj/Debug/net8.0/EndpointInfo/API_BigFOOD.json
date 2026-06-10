@@ -5,37 +5,6 @@
     "version": "1.0"
   },
   "paths": {
-    "/Auth/AuthenticationUsers": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/Clientes/List": {
       "get": {
         "tags": [
@@ -225,27 +194,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/Clientes/ConsultarCedulaGometa": {
-      "get": {
-        "tags": [
-          "Clientes"
-        ],
-        "parameters": [
-          {
-            "name": "cedula",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
           }
         }
       }
@@ -755,20 +703,6 @@
             "items": {
               "$ref": "#/components/schemas/DetalleFacturaDTO"
             },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "LoginDTO": {
-        "type": "object",
-        "properties": {
-          "login": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
             "nullable": true
           }
         },

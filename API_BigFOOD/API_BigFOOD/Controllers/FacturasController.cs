@@ -1,7 +1,6 @@
 ﻿using API_BigFOOD.DTOs;
 using API_BigFOOD.Models;
 using API_BigFOOD.Services;
-using Microsoft.AspNetCore.Authorization; // Librería para uso de EndPoint protegidos
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_BigFOOD.Controllers
@@ -57,7 +56,6 @@ namespace API_BigFOOD.Controllers
         //Método encargado de crear una factura
         [HttpPost]
         [Route("CrearFactura")]
-        [Authorize]
         public async Task<string> CrearFactura(FacturaDTO temp)
         {
             try
@@ -300,7 +298,6 @@ namespace API_BigFOOD.Controllers
         //Metodo encargdo de anular una factura 
         [HttpDelete]
         [Route("AnularFactura")]
-        [Authorize]
         public async Task<string> AnularFactura(int numero)
         {
             try
@@ -336,7 +333,6 @@ namespace API_BigFOOD.Controllers
         //Método encargado de marcar una cuenta por cobrar como pagada
         [HttpPut]
         [Route("PagarCuenta")]
-        [Authorize]
         public async Task<string> PagarCuenta(int numeroFactura)
         {
             try

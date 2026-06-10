@@ -47,12 +47,15 @@ namespace API_BigFOOD.Services
                 return null;
             }
 
+            //Se obtiene el primer resultado encontrado
+            JsonElement resultado = root.GetProperty("results")[0];
+
             //Se crea el objeto DTO con los datos requeridos
             ClienteGometaDTO cliente = new ClienteGometaDTO
             {
                 Cedula = root.GetProperty("cedula").GetString(),
-                Nombre = root.GetProperty("nombre").GetString(),
-                TipoIdentificacion = root.GetProperty("tipoIdentificacion").GetString()
+                Nombre = resultado.GetProperty("fullname").GetString(),
+                TipoIdentificacion = resultado.GetProperty("guess_type").GetString()
             };
 
             //Se retorna la información del cliente

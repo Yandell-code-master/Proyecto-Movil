@@ -1,6 +1,5 @@
 ﻿using API_BigFOOD.Models;
 using API_BigFOOD.Services;
-using Microsoft.AspNetCore.Authorization; // Librería para uso de EndPoint protegidos
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_BigFOOD.Controllers
@@ -47,7 +46,6 @@ namespace API_BigFOOD.Controllers
         //Método para almacenar los datos de un producto
         [HttpPost]
         [Route("Save")]
-        [Authorize]
         public async Task<string> Save(Producto temp)
         {
             try
@@ -89,7 +87,6 @@ namespace API_BigFOOD.Controllers
         //Método encargado de modificar los datos de un producto
         [HttpPut]
         [Route("Update")]
-        [Authorize]
         public async Task<string> Update(Producto temp)
         {
             try
@@ -149,7 +146,6 @@ namespace API_BigFOOD.Controllers
         //Método encargado del proceso eliminar
         [HttpDelete]
         [Route("Delete")]
-        [Authorize]
         public async Task<string> Delete(int codigoInterno)
         {
             try
