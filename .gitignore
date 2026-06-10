@@ -1,0 +1,19 @@
+# Visual Studio cache and settings
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.sln.docuser
+
+# Visual Studio Cache and settings
+.vs/
+*.suo
+*.user
+
+# Build outputs
+bin/
+obj/
+
+/AplicacionMovil/AplicacionMovil/bin/
+/AplicacionMovil/AplicacionMovil/obj/
