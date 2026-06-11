@@ -10,7 +10,7 @@ namespace AplicacionMovil;
 
 public partial class BigFood_Facturas : ContentPage
 {
-    // Colección reactiva que el CollectionView del XAML va a leer automáticamente
+    // Colección reactiva que el CollectionView del XAML va a leer 
     public ObservableCollection<FacturaModel> Facturas { get; set; } = new ObservableCollection<FacturaModel>();
 
     public BigFood_Facturas()
@@ -26,7 +26,7 @@ public partial class BigFood_Facturas : ContentPage
     {
         base.OnAppearing();
 
-        // Llamamos a la API para traer los datos frescos
+        // Llamamos a la API para traer los datos 
         await CargarFacturasAsync();
     }
 
@@ -36,10 +36,10 @@ public partial class BigFood_Facturas : ContentPage
         {
             try
             {
-                // NOTA: Cambiá el 5119 por el puerto real de tu API BigFOOD si usa otro
+            
                 string url = "http://10.0.2.2:5173/Facturas/List";
 
-                // Consumimos el endpoint [HttpGet("List")] de tu controlador
+                // Consumimos el endpoint [HttpGet("List")] del controlador
                 var lista = await client.GetFromJsonAsync<List<FacturaModel>>(url);
 
                 if (lista != null)
@@ -56,7 +56,7 @@ public partial class BigFood_Facturas : ContentPage
             }
             catch (Exception ex)
             {
-                // Alerta por si la API está apagada, el puerto está mal o el emulador no tiene red
+                // Alerta por si la API está apagada
                 await DisplayAlert("Error de Conexión", $"No se pudieron obtener las facturas: {ex.Message}", "OK");
             }
         }

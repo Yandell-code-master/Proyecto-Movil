@@ -42,10 +42,10 @@ public class MockAuthService
             // Leo el string que me devuelve el servidor 
             var responseString = await response.Content.ReadAsStringAsync();
 
-            // Configuro para que ignore mayúsculas/minúsculas al mapear el JSON 
+            // Configuro para que ignore mayúsculas/minúsculas
             var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-            // 4. Si el servidor responde bien
+       
             if (response.IsSuccessStatusCode)
             {
                 // Mapeo la respuesta JSON a mi clase AuthorizationResponse
@@ -54,7 +54,7 @@ public class MockAuthService
                 // Si la API me confirmó que Result es true y viene el Token JWT válido
                 if (authResult != null && authResult.Result && !string.IsNullOrEmpty(authResult.Token))
                 {
-                    // Almaceno el token en las preferencias nativas del dispositivo móvil para usarlo luego
+                    // Almaceno el token 
                     Preferences.Default.Set("jwt_token", authResult.Token);
                 }
 
@@ -72,7 +72,7 @@ public class MockAuthService
         }
         catch (Exception ex)
         {
-            // 6. Captura de errores críticos de infraestructura (Servidor apagado, caída de internet, etc)
+            // 6. Captura de errores de infraestructura 
             System.Diagnostics.Debug.WriteLine($"[AuthService Error] Fallo de red crítico: {ex.Message}");
 
             return new AuthorizationResponse
@@ -86,7 +86,7 @@ public class MockAuthService
 
 /// <summary>
 /// Réplica exacta de la estructura 'AuthorizationResponse' que definió mi API de seguridad.
-/// Nos sirve para mapear limpiamente las propiedades Token, Msj y Result del JSON.
+/// 
 /// </summary>
 public class AuthorizationResponse
 {

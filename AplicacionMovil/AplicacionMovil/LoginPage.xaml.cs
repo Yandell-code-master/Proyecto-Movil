@@ -18,7 +18,7 @@ public partial class LoginPage : ContentPage
         // Inicializo mi servicio HTTP real
         _authService = new MockAuthService();
 
-        //  Recupero el usuario y contraseña guardados si se marcó el "Remember me" en la sesión anterior
+        //  Recupero el usuario y contraseña guardados si se marcó el "Remember me" 
         var savedUsername = Preferences.Get("RememberedUsername", string.Empty);
         var savedPassword = Preferences.Get("RememberedPassword", string.Empty);
 
@@ -87,7 +87,7 @@ public partial class LoginPage : ContentPage
             // Evalúo si la API me dio  el Token 
             if (respuesta != null && respuesta.Result)
             {
-                // Manejo del "Remember me" en el dispositivo
+                // Manejo del "Remember me" 
                 if (chkRemember.IsChecked)
                 {
                     Preferences.Set("RememberedUsername", email);
@@ -95,15 +95,15 @@ public partial class LoginPage : ContentPage
                 }
                 else
                 {
-                    // Si el usuario lo desmarcó, limpio el almacenamiento local
+                    // Si el usuario lo desmarcó, limpio 
                     Preferences.Remove("RememberedUsername");
                     Preferences.Remove("RememberedPassword");
                 }
 
-                // Mensaje de éxito informativo antes de saltar
+                // Mensaje de éxito 
                 await DisplayAlert("Bienvenido", $"{respuesta.Msj}", "OK");
 
-                // 3. REDIRECCIÓN: Saltamos a las facturas usando las rutas declaradas en el AppShell
+                // REDIRECCIÓN: Saltamos a las facturas usando las rutas declaradas en el AppShell
                 await Shell.Current.GoToAsync($"//{nameof(BigFood_Facturas)}");
             }
             else
