@@ -1,10 +1,10 @@
-﻿using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 namespace API_Security.Services
 {
-    public class AuthorizationService : IAuthorizationService
+    public class AuthorizationService : ITokenService
     {
         private IConfiguration configuration;
 
