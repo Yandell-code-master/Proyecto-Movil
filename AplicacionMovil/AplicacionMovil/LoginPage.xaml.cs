@@ -100,6 +100,10 @@ public partial class LoginPage : ContentPage
                     Preferences.Remove("RememberedPassword");
                 }
 
+                // Limpio los campos de texto
+                txtUsername.Text = string.Empty;
+                txtPassword.Text = string.Empty;
+
                 // Mensaje de éxito informativo antes de saltar
                 await DisplayAlert("Bienvenido", $"{respuesta.Msj}", "OK");
 

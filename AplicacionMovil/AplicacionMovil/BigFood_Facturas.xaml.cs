@@ -30,17 +30,35 @@ public partial class BigFood_Facturas : ContentPage
         await CargarFacturasAsync();
     }
 
+    private async void OnLogoutClicked(object? sender, EventArgs e)
+    {
+        bool confirm = await DisplayAlert("Cerrar Sesión", "¿Está seguro de que desea salir?", "Sí", "Cancelar");
+        if (!confirm) return;
+
+        Preferences.Remove("jwt_token");
+        Preferences.Remove("RememberedUsername");
+        Preferences.Remove("RememberedPassword");
+        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+    }
+
     private async Task CargarFacturasAsync()
     {
         using (HttpClient client = new HttpClient())
         {
             try
             {
-                // NOTA: Cambiá el 5119 por el puerto real de tu API BigFOOD si usa otro
-                string url = "http://10.0.2.2:5173/Facturas/List";
+                string url = "http://BigFOOD-API.somee.com/Facturas/List";
 
-                // Consumimos el endpoint [HttpGet("List")] de tu controlador
-                var lista = await client.GetFromJsonAsync<List<FacturaModel>>(url);
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                var token = Preferences.Get("jwt_token", string.Empty);
+                if (!string.IsNullOrEmpty(token))
+                {
+                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                }
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                var lista = await response.Content.ReadFromJsonAsync<List<FacturaModel>>();
 
                 if (lista != null)
                 {

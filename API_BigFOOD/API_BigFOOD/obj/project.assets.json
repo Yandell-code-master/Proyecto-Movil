@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net8.0": {
       "Azure.Core/1.38.0": {
@@ -3061,23 +3061,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\luisc\\.nuget\\packages\\": {},
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\API_BigFOOD.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Documents\\GitHub\\Proyecto Movil\\API_BigFOOD\\API_BigFOOD\\API_BigFOOD.csproj",
       "projectName": "API_BigFOOD",
-      "projectPath": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\API_BigFOOD.csproj",
-      "packagesPath": "C:\\Users\\luisc\\.nuget\\packages\\",
-      "outputPath": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\Documents\\GitHub\\Proyecto Movil\\API_BigFOOD\\API_BigFOOD\\API_BigFOOD.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\Documents\\GitHub\\Proyecto Movil\\API_BigFOOD\\API_BigFOOD\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\luisc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3091,6 +3091,7 @@
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {}
         }
@@ -3105,10 +3106,11 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net8.0": {
+        "framework": "net8.0",
         "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
@@ -3151,7 +3153,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

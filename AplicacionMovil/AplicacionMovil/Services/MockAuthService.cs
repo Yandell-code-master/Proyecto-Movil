@@ -8,9 +8,7 @@ public class MockAuthService
 {
     private readonly HttpClient _httpClient;
 
-    // NOTA PERSONAL: Si testeo con emulador local de Android, usar "http://10.0.2.2:PUERTO/login"
-    // Si ya está subido al servidor de Somee u otro hosting, cambiar por la URL pública.
-    private const string LoginUrl = "http://10.0.2.2:5119/login";
+    private const string LoginUrl = "http://Api-security.somee.com/login";
 
     public MockAuthService()
     {
