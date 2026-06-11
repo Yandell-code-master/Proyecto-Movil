@@ -20,20 +20,20 @@ namespace API_Security.Controllers
         }
 
         [HttpPost]
-        [Route("/login")]
+        [Route("login")]
         public IActionResult Login(Usuario usuario) {
             Usuario temp = dbContextUsario.Usuarios.Where(u => u.Email == usuario.Email && u.Password == usuario.Password).FirstOrDefault();
 
             if (temp == null) 
             {
-                return Unauthorized();
+                return Unauthorized(new AuthorizationResponse() { Msj = "No existe el usuario", Token = "", Result = false});
             }
 
             return Ok(new AuthorizationResponse() { Msj = "ok", Result = true, Token = authorizationService.DevolverToken(temp.Email) });
         }
 
         [HttpGet]
-        [Route("/list")]
+        [Route("list")]
         public IActionResult List()
         {
 
