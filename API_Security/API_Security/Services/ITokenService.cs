@@ -1,6 +1,6 @@
 ﻿namespace API_Security.Services
 {
-    public interface IAuthorizationService
+    public interface ITokenService
     {
         public string DevolverToken(string email);
     }

@@ -1,22 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Proyecto_Desktop_Lenguajes\\BigFoodServicesSA\\API_BigFOOD\\",
+  "WorkspaceRootPath": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyecto_desktop_lenguajes\\bigfoodservicessa\\api_bigfood\\api_bigfood\\controllers\\facturascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyectogit\\proyecto-movil\\api_bigfood\\api_bigfood\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyectogit\\proyecto-movil\\api_bigfood\\api_bigfood\\controllers\\facturascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\controllers\\facturascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyecto_desktop_lenguajes\\bigfoodservicessa\\api_bigfood\\api_bigfood\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyecto_desktop_lenguajes\\bigfoodservicessa\\api_bigfood\\api_bigfood\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyectogit\\proyecto-movil\\api_bigfood\\api_bigfood\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyecto_desktop_lenguajes\\bigfoodservicessa\\api_bigfood\\api_bigfood\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyectogit\\proyecto-movil\\api_bigfood\\api_bigfood\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyectogit\\proyecto-movil\\api_bigfood\\api_bigfood\\dtos\\facturadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\dtos\\facturadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyectogit\\proyecto-movil\\api_bigfood\\api_bigfood\\dtos\\detallefacturapdfdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\dtos\\detallefacturapdfdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyectogit\\proyecto-movil\\api_bigfood\\api_bigfood\\dtos\\detallefacturadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\dtos\\detallefacturadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|c:\\proyectogit\\proyecto-movil\\api_bigfood\\api_bigfood\\dtos\\clientegometadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C3A8FE9-9C04-2C32-1CC7-EFA633BD7E6E}|API_BigFOOD\\API_BigFOOD.csproj|solutionrelative:api_bigfood\\dtos\\clientegometadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +50,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Producto.cs",
-              "DocumentMoniker": "C:\\Proyecto_Desktop_Lenguajes\\BigFoodServicesSA\\API_BigFOOD\\API_BigFOOD\\Models\\Producto.cs",
-              "RelativeDocumentMoniker": "API_BigFOOD\\Models\\Producto.cs",
-              "ToolTip": "C:\\Proyecto_Desktop_Lenguajes\\BigFoodServicesSA\\API_BigFOOD\\API_BigFOOD\\Models\\Producto.cs",
-              "RelativeToolTip": "API_BigFOOD\\Models\\Producto.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T18:10:10.267Z",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "API_BigFOOD\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\Properties\\launchSettings.json*",
+              "RelativeToolTip": "API_BigFOOD\\Properties\\launchSettings.json*",
+              "ViewState": "AgIAABMAAAAAAAAAAAAiwCgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-11T09:12:03.472Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FacturasController.cs",
-              "DocumentMoniker": "C:\\Proyecto_Desktop_Lenguajes\\BigFoodServicesSA\\API_BigFOOD\\API_BigFOOD\\Controllers\\FacturasController.cs",
-              "RelativeDocumentMoniker": "API_BigFOOD\\Controllers\\FacturasController.cs",
-              "ToolTip": "C:\\Proyecto_Desktop_Lenguajes\\BigFoodServicesSA\\API_BigFOOD\\API_BigFOOD\\Controllers\\FacturasController.cs",
-              "RelativeToolTip": "API_BigFOOD\\Controllers\\FacturasController.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAAADcAAAApAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "FacturaDTO.cs",
+              "DocumentMoniker": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\DTOs\\FacturaDTO.cs",
+              "RelativeDocumentMoniker": "API_BigFOOD\\DTOs\\FacturaDTO.cs",
+              "ToolTip": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\DTOs\\FacturaDTO.cs",
+              "RelativeToolTip": "API_BigFOOD\\DTOs\\FacturaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T18:02:39.957Z",
+              "WhenOpened": "2026-06-11T08:38:35.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DetalleFacturaPdfDTO.cs",
+              "DocumentMoniker": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\DTOs\\DetalleFacturaPdfDTO.cs",
+              "RelativeDocumentMoniker": "API_BigFOOD\\DTOs\\DetalleFacturaPdfDTO.cs",
+              "ToolTip": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\DTOs\\DetalleFacturaPdfDTO.cs",
+              "RelativeToolTip": "API_BigFOOD\\DTOs\\DetalleFacturaPdfDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T08:38:34.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DetalleFacturaDTO.cs",
+              "DocumentMoniker": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\DTOs\\DetalleFacturaDTO.cs",
+              "RelativeDocumentMoniker": "API_BigFOOD\\DTOs\\DetalleFacturaDTO.cs",
+              "ToolTip": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\DTOs\\DetalleFacturaDTO.cs",
+              "RelativeToolTip": "API_BigFOOD\\DTOs\\DetalleFacturaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T08:38:33.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ClienteGometaDTO.cs",
+              "DocumentMoniker": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\DTOs\\ClienteGometaDTO.cs",
+              "RelativeDocumentMoniker": "API_BigFOOD\\DTOs\\ClienteGometaDTO.cs",
+              "ToolTip": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\DTOs\\ClienteGometaDTO.cs",
+              "RelativeToolTip": "API_BigFOOD\\DTOs\\ClienteGometaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T08:38:32.463Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Cliente.cs",
-              "DocumentMoniker": "C:\\Proyecto_Desktop_Lenguajes\\BigFoodServicesSA\\API_BigFOOD\\API_BigFOOD\\Models\\Cliente.cs",
-              "RelativeDocumentMoniker": "API_BigFOOD\\Models\\Cliente.cs",
-              "ToolTip": "C:\\Proyecto_Desktop_Lenguajes\\BigFoodServicesSA\\API_BigFOOD\\API_BigFOOD\\Models\\Cliente.cs",
-              "RelativeToolTip": "API_BigFOOD\\Models\\Cliente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
+              "Title": "ProductoController.cs",
+              "DocumentMoniker": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\Controllers\\ProductoController.cs",
+              "RelativeDocumentMoniker": "API_BigFOOD\\Controllers\\ProductoController.cs",
+              "ToolTip": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\Controllers\\ProductoController.cs",
+              "RelativeToolTip": "API_BigFOOD\\Controllers\\ProductoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T17:32:55.989Z",
+              "WhenOpened": "2026-06-11T08:38:29.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FacturasController.cs",
+              "DocumentMoniker": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\Controllers\\FacturasController.cs",
+              "RelativeDocumentMoniker": "API_BigFOOD\\Controllers\\FacturasController.cs",
+              "ToolTip": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\Controllers\\FacturasController.cs",
+              "RelativeToolTip": "API_BigFOOD\\Controllers\\FacturasController.cs",
+              "ViewState": "AgIAAFABAAAAAAAAAAAmwGUBAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T08:37:09.913Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "ClienteController.cs",
-              "DocumentMoniker": "C:\\Proyecto_Desktop_Lenguajes\\BigFoodServicesSA\\API_BigFOOD\\API_BigFOOD\\Controllers\\ClienteController.cs",
+              "DocumentMoniker": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\Controllers\\ClienteController.cs",
               "RelativeDocumentMoniker": "API_BigFOOD\\Controllers\\ClienteController.cs",
-              "ToolTip": "C:\\Proyecto_Desktop_Lenguajes\\BigFoodServicesSA\\API_BigFOOD\\API_BigFOOD\\Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\ProyectoGit\\Proyecto-Movil\\API_BigFOOD\\API_BigFOOD\\Controllers\\ClienteController.cs",
               "RelativeToolTip": "API_BigFOOD\\Controllers\\ClienteController.cs",
-              "ViewState": "AgIAAPgAAAAAAAAAAAAswBYBAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAswGsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T17:26:40.627Z",
+              "WhenOpened": "2026-06-11T08:37:07.171Z",
               "EditorCaption": ""
             }
           ]
